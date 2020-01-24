@@ -1,0 +1,26 @@
+body{
+   width: 80%;
+   height: 86%;
+   background: linear-gradient(45deg, pink , rgb(116, 1, 100), rgb(80, 6, 165));
+   Color: black;
+}
+
+.hello{
+   color: white;
+}
+
+.bgcss{
+   color: rgb(105, 196, 248);
+}
+
+#result{
+   border: solid 1px darkcyan;
+   color: rgb(243, 148, 255);
+   border-radius: 8px;
+}
+
+.picture{
+   margin-left: 20px;
+   width: 300px;
+   height: auto;
+}

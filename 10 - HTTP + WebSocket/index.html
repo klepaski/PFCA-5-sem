@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+        <h1>LAB10</h1>
+        <h2>Requests</h2>
+        <div id = 'requestContainer'></div><br>
+        <h2>Responses</h2>
+        <div id = 'responseContainer'></div><br>
+        <button onclick="startWS()">start WS</button>
+        
+
+        
+        <script>
+            const requestContainer = document.getElementById('requestContainer');
+            const responseContainer = document.getElementById('responseContainer');
+
+            let n = 0;
+
+            function startWS() {
+                
+                const socket = new WebSocket('ws:/localhost:4000');
+               
+                let messagesFromClient = setInterval(() => {
+                    let message = JSON.stringify({_10_01_client: (++n) });
+                    socket.send(message);
+                    let newMessage = document.createElement('div');
+                    newMessage.innerText = message;
+                    requestContainer.appendChild(newMessage);
+                }, 300);
+
+                socket.onmessage = message => {
+                    let newMessage = document.createElement('div');
+                    newMessage.innerText = message.data;
+                    responseContainer.appendChild(newMessage);
+                };
+
+                setTimeout(() => {
+                    clearInterval(messagesFromClient);
+                    socket.close();
+                }, 2500);
+            }
+
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecentBooks>
+	  <Book>
+	    <Title>Conan Doyle - "Lost world"</Title>
+	    <Description>One of my favourite book</Description>
+	    <Date>1912</Date>
+	  </Book>
+	  <Book>
+	    <Title>Mikhail Yurievich Lermontov - "Hero of our time"</Title>
+	    <Description>One else my favourite book</Description>
+	    <Date>1838-1840</Date>
+	  </Book>
+	</RecentBooks>

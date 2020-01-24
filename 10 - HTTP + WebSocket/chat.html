@@ -1,0 +1,26 @@
+<html>
+<body>
+<h1>Chat</h1>
+<div id="chatContainer"></div>
+<input id="msg" type="text">
+</body>
+<script>
+    const socket = new WebSocket('ws://localhost:5000');
+    const chatContainer = document.getElementById('chatContainer');
+    const msg = document.getElementById('msg');
+    const ENTER_BUTTON = 13;
+
+    socket.onmessage = message => {
+                    let newMessage = document.createElement('div');
+                    newMessage.innerText = message.data;
+                    chatContainer.appendChild(newMessage);
+                };
+
+    msg.addEventListener('keydown', event => {
+    if (event.keyCode == ENTER_BUTTON) {
+         socket.send(msg.value);
+         msg.value = '';
+    }
+  });
+</script>
+</html>

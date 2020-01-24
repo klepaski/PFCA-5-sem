@@ -1,0 +1,2 @@
+Server sends this text.
+Client reads it and write to 'upload'

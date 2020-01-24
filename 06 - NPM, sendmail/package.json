@@ -1,0 +1,10 @@
+{
+    "author": {
+        "email": "julia.klepaski@gmail.com"
+    },
+    "name": "juliapackage",
+    "version": "10.0.0",
+    "dependencies": {
+        "sendmail": "^1.6.1"
+    }
+}
