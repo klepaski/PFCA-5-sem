@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1 id='lastName'></h1>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+  let element = $('#lastName');
+	$.ajax({
+        method: 'GET',
+		url: '/api/name',
+		success: (data) => {
+			element.append(data);
+		}
+	});
+</script>
+</html>

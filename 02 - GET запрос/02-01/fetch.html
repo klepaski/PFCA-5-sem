@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch</title>
+</head>
+<body>
+    <h1 id="lastName">FETCH </h1>
+</body>
+<script>
+    let element = document.getElementById('lastName');
+	let xhr = new XMLHttpRequest();
+	fetch('/api/name').then(res => {
+      res.text().then(text => {
+      	element.append(text);
+      });
+    });
+</script>
+</html>

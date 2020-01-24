@@ -1,0 +1,108 @@
+<html>
+<head></head>
+<body>
+<div id='get_result'></div>
+<button onclick="Get()">GET</button>
+<script>
+    function Get(){
+        console.log('GET');
+        fetch('http://localhost:5000/api/db',{
+            method:'GET', mode: 'no-cors',
+            headers:{'Content-Type': 'application/json','Accept': 'application/json'}
+        }
+    )
+    .then(response=>{return response.json();})
+    .then((pdata)=> {
+        console.log('pdata',pdata);
+        get_result.innerHTML='';
+        pdata.forEach(el => {get_result.innerHTML+=(el.id+'. '+el.name+' '+el.bday+'<br/>');  
+        });
+    });
+    }
+</script>    
+<div style="padding: 20px">
+    <div class='row'>
+        <label class='col-2'>Идентификатор</label>
+        <input type='number' class='col-3' id='ID' min='0'/>
+    </div>
+    <div class='row'>
+        <label class='col-2'>ФИО</label>
+        <input type='text' class='col-3' id='Name'/>
+    </div>
+    <div class='row'>
+        <label class='col-2'>Дата рождения</label>
+        <input type='date' class='col-3' id='Bday'/>
+    </div>
+    <div class='row'>
+        <button class='col-2' onclick="Post()">Post</button>
+    </div>
+</div>
+<script>
+        function Post(){
+            console.log('Post');
+            fetch('http://localhost:5000/api/db',{
+                method:'POST', mode: 'no-cors',
+                headers:{'Content-Type': 'application/json','Accept': 'application/json'},
+                body:JSON.stringify({id:ID.value,name: Name.value,bday:  Bday.value})
+            }
+        )
+        .then(response=>{return response.json();})
+        .then((pdata)=> {
+            console.log('POST.pdata',pdata);
+            });
+        }
+    </script>
+<div class='row'>
+            <label class='col-2'>Идентификатор</label>
+            <input type='number' class='col-3' id='IDPut' min='0'/>
+</div>
+<div class='row'>
+        <label class='col-2'>ФИО</label>
+        <input type='text' class='col-3' id='NamePut'/>
+    </div>
+    <div class='row'>
+        <label class='col-2'>Дата рождения</label>
+        <input type='date' class='col-3' id='BdayPut'/>
+    </div>
+<div class='row'>
+        <button class='col-2' onclick="PUT()">PUT</button>
+    </div>
+<script>
+        function PUT(){
+            console.log('PUT');
+            fetch('http://localhost:5000/api/db',{
+                method:'PUT',
+                headers:{'Content-Type': 'application/json','Accept': 'application/json'},
+                body:JSON.stringify({id:IDPut.value,name: NamePut.value,bday:  BdayPut.value})
+            }
+        )
+        .then(response=>{return response.json();})
+        .then((pdata)=> {
+            console.log('PUT.pdata',pdata);
+            });
+        }
+</script>
+<div class='row'>
+    <label class='col-2'>Идентификатор</label>
+    <input type='number' class='col-3' id='IDDel' min='0'/>
+</div>
+<div class='row'>
+    <button class='col-2' onclick="Delete()">Delete</button>
+</div>
+<script>
+    function Delete(){
+        console.log('Delete');
+        fetch('http://localhost:5000/api/db',{
+            method:'Delete',
+            headers:{'Content-Type': 'application/json','Accept': 'application/json'},
+            body:JSON.stringify({id:IDDel.value,name: '0',bday:  '0'})
+        }
+    )
+    .then(response=>{return response.json();})
+    .then((pdata)=> {
+        console.log('Delete.pdata',pdata);
+        });
+    }
+</script>
+</body>
+</html>
